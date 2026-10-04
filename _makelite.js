@@ -1,7 +1,10 @@
-/* 生成 GitHub 托管版：图片 + 压缩视频（原片 192MB → 40.8MB）
+/* 生成 GitHub 托管版：图片 + 压缩视频（原片 192MB → 41MB）
    与原版的差异只有两处：
    1. 封面视频换成静帧图（cover.jpg），省掉首屏 6.7MB 加载
-   2. 顶部加一条说明条，注明视频为压缩版                                      */
+   2. 顶部加一条说明条，注明视频为压缩版
+
+   注意：说明条不放任何外部链接。本页视频已在页面内，
+   不要引用别的站点（曾误引过漫游巴士项目的地址，已剔除）。   */
 const fs=require('fs');
 const src=process.argv[2]||'AI影像创作课程.html';
 const dst=process.argv[3]||'.wb_git_tmp/gh-pages/index.html';
@@ -35,7 +38,7 @@ const CSS=`
 `;
 h=h.replace('</head>', CSS+'</head>');
 
-const note='<div class="lite-note"><b>ONLINE 版</b><span>本页视频为压缩版（原 192MB → 41MB），画质适合在线观看</span><a href="https://harbin-rambler-bus.app.workbuddy.host/" target="_blank" rel="noopener">原画质完整版 →</a></div>';
+const note='<div class="lite-note"><b>ONLINE 版</b><span>本页视频为在线压缩版（原 192MB → 41MB），画质适合在线观看</span></div>';
 h=h.replace(/(<nav[^>]*>[\s\S]*?<\/nav>)/, '$1'+note);
 
 fs.writeFileSync(dst,h);
