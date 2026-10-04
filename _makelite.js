@@ -21,16 +21,17 @@ const CSS=`
   background-image:url("assets/img/cover.jpg");
   background-size:cover; background-position:center;
 }
+/* 遮罩与主站保持一致（2026-10-04 加深，防标题被画面亮部吞掉） */
 .hero-bg-lite::after{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.30) 34%,
-    rgba(0,0,0,.56) 68%,rgba(0,0,0,.85) 92%,var(--bg) 100%);
+  background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.52) 26%,
+    rgba(0,0,0,.62) 52%,rgba(0,0,0,.78) 74%,var(--bg) 94%,var(--bg) 100%);
 }
 .lite-note{
-  max-width:var(--maxw); margin:0 auto; padding:10px var(--gut);
+  max-width:var(--maxw); margin:0 auto; padding:11px var(--gut);
   display:flex; align-items:center; gap:10px; flex-wrap:wrap;
   border-bottom:1px solid var(--rule); background:var(--bg-2);
-  font-family:var(--mono); font-size:10.2px; letter-spacing:.1em; color:var(--ink-3);
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; color:var(--ink-3);
 }
 .lite-note b{color:var(--sig); font-weight:600; letter-spacing:.14em}
 .lite-note a{color:var(--ink-2); border-bottom:1px solid var(--sig-line)}
@@ -38,7 +39,7 @@ const CSS=`
 `;
 h=h.replace('</head>', CSS+'</head>');
 
-const note='<div class="lite-note"><b>ONLINE 版</b><span>本页视频为在线压缩版（原 192MB → 41MB），画质适合在线观看</span></div>';
+const note='<div class="lite-note"><b>ONLINE 版</b><span>本页视频为在线压缩版（原 192MB → 41MB），画质适合在线观看 · 内容与模型信息已更新至 2026 年 10 月</span></div>';
 h=h.replace(/(<nav[^>]*>[\s\S]*?<\/nav>)/, '$1'+note);
 
 fs.writeFileSync(dst,h);
